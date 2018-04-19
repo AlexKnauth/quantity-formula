@@ -3,7 +3,8 @@
 (provide declare-quantity
          define-formula
          formulas->graph
-         formula-graph-find-path)
+         formula-graph-find-path
+         formula-path-state)
 
 (require graph
          racket/hash
@@ -50,6 +51,10 @@
      (make-constructor-style-printer
       (λ (self) (formula-name self))
       (λ (self) (formula-fdis self))))])
+
+;; A FormulaPath is a [Listof Formula]
+;; where the formulas are applies in order, from left to
+;; right, to get from one state to another.
 
 ;; A State is a [Hashof Quantity Any].
 
@@ -176,7 +181,7 @@
   (formula-graph quantities formulas))
 
 ;; formula-graph-find-path :
-;; FormulaGraph [Setof Quantity] [Setof Quantity] -> [Listof Formula]
+;; FormulaGraph [Setof Quantity] [Setof Quantity] -> FormulaPath
 ;; Finds a path from start -> end, and produces the formulas
 ;; needed to get to knowing end from knowing start.
 (define (formula-graph-find-path G start end)
@@ -199,6 +204,12 @@
            F))
        (unless F (error 'bad))
        (cons F (loop (rest Vs)))])))
+
+;; formula-path-state : State FormulaPath -> State
+(define (formula-path-state state path)
+  (for/fold ([state state])
+            ([formula (in-list path)])
+    (formula state)))
 
 ;; ---------------------------------------------------------
 

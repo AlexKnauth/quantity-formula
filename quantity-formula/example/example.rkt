@@ -96,7 +96,33 @@ G
 
 path
 
-(for/fold ([state state])
-          ([formula (in-list path)])
-  (formula state))
+(formula-path-state state path)
+;  -->
+;(hash
+; (kinetic-energy 'A 't0)
+; #e22.5
+; (mass 'A)
+; 5
+; (position 'A 't1)
+; #e103.5
+; (kinetic-energy 'A 't1)
+; 40
+; (velocity 'A 't1)
+; 4
+; (∆time 't0 't1)
+; 1
+; (time 't0)
+; 0
+; (momentum 'A 't1)
+; 20
+; (acceleration 'A 'always)
+; 1
+; (momentum 'A 't0)
+; 15
+; (position 'A 't0)
+; 100
+; (velocity 'A 't0)
+; 3
+; (time 't1)
+; 1)
 
