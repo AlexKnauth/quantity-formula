@@ -22,6 +22,10 @@ A `Formula` is the result of a function defined by
 `define-formula`, and can be used as a `State -> State`
 function.
 
+A `FormulaPath` is a `[Listof Formula]`
+where the formulas are applied in order, from left to
+right, to get from one state to another.
+
 A `State` is a `[Hashof Quantity Any]`.
 
 ### Forms for defining Quantities and Formulas
@@ -58,10 +62,19 @@ A `FormulaGraph` is a graph where:
 Creates a formula graph from the given formulas.
 
 ```
-(formula-graph-find-path G start end) -> [Listof Formula]
+(formula-graph-find-path G start end) -> FormulaPath
   G     : FormulaGraph
   start : [Setof Quantity]
   end   : [Setof Quantity]
 ```
 Finds a path from `start` -> `end`, and produces the formulas
 needed to get to knowing `end` from knowing `start`.
+
+```
+(formula-path-state state path) -> State
+  state : State
+  path  : FormulaPath
+```
+Applies the formulas in the given path to the given knowledge
+state, producing a new state that contains the new quantities
+introduced by the formulas.
