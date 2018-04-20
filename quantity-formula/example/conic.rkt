@@ -123,6 +123,13 @@ define-formula ae->apoperi (object)
   peri = {a * {1 - e}}
   apo  = {a * {1 + e}}
 
+define-formula r@θ->apoperi (object)
+  #:input ([r (radius@theta object)])
+  #:output ([peri (perifocus object)]
+            [apo (apofocus object)])
+  peri = (r 0)
+  apo = (r pi)
+
 ;; Computing c from other quantities
 
 define-formula ae->c (object)
@@ -192,6 +199,7 @@ define-formula cperi->a (object)
            (el->apoperi o)
            (ac->apoperi o)
            (ae->apoperi o)
+           (r@θ->apoperi o)
            (el->p o)
            (ae->c o)
            (aperi->c o)
