@@ -36,9 +36,10 @@ declare-quantity linear-eccentricity (object)
 declare-quantity focal-parameter (object)
 
 ;; r@θ : Angle -> Real
-;; warning: the output will be infinite for a parabola
-;; warning: the output will be negative for the "mirror"
-;;          side of a hyperbola
+;; warning: the output will be infinite for the ends of a
+;;          parabola
+;; warning: the output will be infinite for the ends of a
+;;          hyperbola and negative for the "mirror" side
 declare-quantity radius@theta (object)
 
 ;; peri
