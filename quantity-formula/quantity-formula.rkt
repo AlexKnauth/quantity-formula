@@ -3,7 +3,7 @@
 (provide declare-quantity
          define-formula
          formulas->graph
-         formula-graph-find-path
+         find-formula-path
          formula-path-state)
 
 (require graph
@@ -180,11 +180,11 @@
        (formula-output fmla))))
   (formula-graph quantities formulas))
 
-;; formula-graph-find-path :
+;; find-formula-path :
 ;; FormulaGraph [Setof Quantity] [Setof Quantity] -> FormulaPath
 ;; Finds a path from start -> end, and produces the formulas
 ;; needed to get to knowing end from knowing start.
-(define (formula-graph-find-path G start end)
+(define (find-formula-path G start end)
   (match-define (formula-graph Qs Fs) G)
   (define Vs
     (fewest-vertices-path G start end))

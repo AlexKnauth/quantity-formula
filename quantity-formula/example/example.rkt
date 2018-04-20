@@ -90,9 +90,9 @@ define G
 G
 
 (define path
-  (formula-graph-find-path G
-                           (set t0 t1 m_A x_A_0 v_A_0 a_A)
-                           (set KE_A_0 x_A_1 KE_A_1)))
+  (find-formula-path G
+                     (set t0 t1 m_A x_A_0 v_A_0 a_A)
+                     (set KE_A_0 x_A_1 KE_A_1)))
 
 path
 

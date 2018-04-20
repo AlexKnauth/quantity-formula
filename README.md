@@ -62,7 +62,7 @@ A `FormulaGraph` is a graph where:
 Creates a formula graph from the given formulas.
 
 ```
-(formula-graph-find-path G start end) -> FormulaPath
+(find-formula-path G start end) -> FormulaPath
   G     : FormulaGraph
   start : [Setof Quantity]
   end   : [Setof Quantity]
