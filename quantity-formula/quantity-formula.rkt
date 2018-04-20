@@ -190,6 +190,7 @@
     (fewest-vertices-path G start end))
   (let loop ([Vs Vs])
     (match Vs
+      [#f #f]
       ['() '()]
       [(list V) '()]
       [(list-rest A B _)
